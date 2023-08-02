@@ -12,13 +12,12 @@ import UploadRoute from "./Routes/UploadRoute.js";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://social-media-frontend-pi6v60xre-mukul314.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: /\.vercel\.app$/,
+};
+
+// Enable CORS with the specified options
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
